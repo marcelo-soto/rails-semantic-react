@@ -1,0 +1,35 @@
+<div class="ui two column centered grid">
+  <div class="column">
+  	<h1 class="ui header">Listado de productos</h1>  	
+  </div>
+  <div class="two column centered row">
+    <div class="column">
+
+
+
+		<table class="ui compact table">
+		  <thead>
+		    <tr>
+		      <th>Código</th>
+		      <th>Descripción</th>
+		      <th></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<% @productos.each do |producto| %>
+		    <tr class= <%= if producto.esta_activo then "" else "negative" end %> >
+		      <td><%= producto.codigo %></td>
+		      <td><%= producto.descripcion %></td>
+		      <td><%= link_to semantic_icon("edit"), edit_producto_path(producto) %></td>
+		    </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+
+
+
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Semantic2</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="ui menu">
+  <div class="menu">
+
+  	<%= link_to "Home", root_path, class: "item" %>
+
+    <div class="ui pointing dropdown link item">
+    	<i class="dropdown icon"></i>
+    	<span class="text">Productos</span>
+    	<div class="menu">
+    		<div class="header">Acciones</div>
+
+    		<div class="item">
+    			<%= link_to productos_path do -%>
+    				<%= semantic_icon "list" %>
+    				Listado
+    			<% end -%>
+    		</div>
+
+    		<div class="item">
+    			<%= link_to new_producto_path do -%>
+    				<%= semantic_icon "write" %>
+    				Crear
+    			<% end -%>
+    		</div>
+
+    		<div class="header">Otros</div>
+
+
+    	</div>
+    </div>
+
+    <div class="ui pointing dropdown link item">
+      <i class="dropdown icon"></i>
+      <span class="text">Shopping</span>
+      <div class="menu">
+        <div class="header">Categories</div>
+        <div class="item">
+          <i class="dropdown icon"></i>
+          <span class="text">Clothing</span>
+          <div class="menu">
+            <div class="header">Mens</div>
+            <div class="item">Shirts</div>
+            <div class="item">Pants</div>
+            <div class="item">Jeans</div>
+            <div class="item">Shoes</div>
+            <div class="divider"></div>
+            <div class="header">Womens</div>
+            <div class="item">Dresses</div>
+            <div class="item">Shoes</div>
+            <div class="item">Bags</div>
+          </div>
+        </div>
+        <div class="item">Home Goods</div>
+        <div class="item">Bedroom</div>
+        <div class="divider"></div>
+        <div class="header">Order</div>
+        <div class="item">Status</div>
+        <div class="item">Cancellations</div>
+      </div>
+    </div>
+    <a class="item">
+      Forums
+    </a>
+    <a class="item">
+      Contact Us
+    </a>
+  </div>
+</div>
+
+<%= semantic_flash %>
+
+<%= yield %>
+
+</body>
+</html>

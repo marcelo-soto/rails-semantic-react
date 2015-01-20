@@ -1,0 +1,34 @@
+<div class="ui two column centered grid">
+  <div class="column">
+  	<h1 class="ui header">Crear producto</h1>  	
+  </div>
+  <div class="two column centered row">
+    <div class="column">
+
+    	<%= simple_form_for @producto do |f| %>
+    	<% if f.error_notification %>
+	    	<div class="ui form error">
+	    		<%= f.error_notification %>
+	    	</div>
+	    <% end %>
+		  <h4 class="ui dividing header">Datos</h4>
+		  <div class="two fields">
+		    <%= f.input :codigo %>
+		   	<%= f.input :descripcion %>
+		  </div>
+
+		   <h4 class="ui dividing header">Estado</h4>
+
+		    <%= f.input :esta_activo, :label => "¿Activo?", :wrapper => :semantic_checkbox_toggle %>
+
+		  <div class="ui error message">
+		    <div class="header">We noticed some issues</div>
+		  </div>
+		  <%= f.button :submit, class: "ui submit button", value: "Crear producto" %>
+
+		<% end %>
+    </div>
+  </div>
+</div>
+
+
