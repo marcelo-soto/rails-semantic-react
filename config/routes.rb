@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :productos, default: :json
+      resources :productos, default: :json do
+        put 'set_active'
+        put 'set_inactive'
+      end
     end
   end
 
