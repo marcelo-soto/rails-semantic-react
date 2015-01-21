@@ -1,2 +1,1 @@
-<h1>Principal#index</h1>
-<p>Find me in app/views/principal/index.html.erb</p>
+<%= react_component('DataTable', { url: "/api/v1/productos.json", fields: [{field: "codigo", label: "Código", width: 100}, {field: "descripcion", label: "Descripción", width: 400}], filterField: {field: "codigo", name: "Codigo"}}) %>

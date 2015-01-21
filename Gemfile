@@ -46,3 +46,4 @@ end
 gem 'jquery-turbolinks'
 gem 'semantic-ui-sass'
 gem 'simple_form'
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
