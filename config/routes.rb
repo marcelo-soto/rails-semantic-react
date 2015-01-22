@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   resources :productos
 
   namespace :api do
-    namespace :v1 do
-      resources :productos, default: :json do
-        put 'set_active'
-        put 'set_inactive'
+    namespace :web do
+      namespace :v1 do
+        resources :productos, default: :json do
+          put 'set_active'
+          put 'set_inactive'
+        end
       end
     end
   end
