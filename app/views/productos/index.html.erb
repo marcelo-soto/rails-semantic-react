@@ -6,7 +6,9 @@
     <div class="column">
 
 
+    	<%= react_component('DataTable', { url: "/api/web/v1/", resource: "productos", fields: [{field: "codigo", label: "Código", width: 100}, {field: "descripcion", label: "Descripción", width: 400}], filterField: {field: "codigo", name: "Codigo"}}) %>
 
+    	<!--
 		<table class="ui compact table">
 		  <thead>
 		    <tr>
@@ -25,7 +27,7 @@
 		    <% end %>
 		  </tbody>
 		</table>
-
+		-->
 
 
     </div>

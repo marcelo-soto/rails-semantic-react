@@ -38,7 +38,8 @@ var RowList = React.createClass({
           return(<td key={f.field} width={f.width}>{ rw[f.field] }</td>)
         });
         var tr_classes = React.addons.classSet({'negative': !rw.esta_activo});
-        rows.push(<tr key={rw.id} className={tr_classes}>{r}<td className="collapsing"><div className="ui fitted toggle checkbox" onClick={this.handleToggle.bind(null, rw)}><input type="checkbox" checked={rw.esta_activo} /><label></label></div></td></tr>);
+        var tr_edit_url = "/" + that.props.resource + "/" + rw.id + "/edit";
+        rows.push(<tr key={rw.id} className={tr_classes}>{r}<td className="collapsing"><a href={tr_edit_url}><i className="edit icon"></i></a></td><td className="collapsing"><div className="ui fitted toggle checkbox" onClick={this.handleToggle.bind(null, rw)}><input type="checkbox" checked={rw.esta_activo} /><label></label></div></td></tr>);
       }
     }.bind(this));
     return (<tbody>{rows}</tbody>);
@@ -56,9 +57,9 @@ var BodyTable = React.createClass({
     return (
     <table className="ui compact table">
       <thead>
-        <tr>{header}<th>Activo</th></tr>
+        <tr>{header}<th></th><th>Activo</th></tr>
       </thead>
-      <RowList data={this.props.data} filter={this.props.filter} fields={this.props.fields} filterField={this.props.filterField} onToggleClick={this.onToggleClick}/>
+      <RowList resource={this.props.resource} data={this.props.data} filter={this.props.filter} fields={this.props.fields} filterField={this.props.filterField} onToggleClick={this.onToggleClick}/>
     </table>
     )
   }
@@ -96,13 +97,17 @@ var DataTable = React.createClass({
       url: this.props.url + this.props.resource + "/" + data_id + method,
       dataType: "json",
       type: "PUT",
-      success: function(data){
-      	if(data.status === 'ok'){
+      success: function(row_data){
+        console.log("===>: ", this.state.data);
+      	if(row_data.status === 'ok'){
+          var data = [];
 			    for (var i = 0; i < this.state.data.length; i++) {
-			      if(this.state.data[i].id === data_id)
-			        this.state.data[i].esta_activo = value;
+			      if(this.state.data[i].id === data_id){
+              this.state.data[i].esta_activo = value;
+            }
+            data.push(this.state.data[i]);
 			    }
-			    //this.forceUpdate(); 
+          this.setState({data: data});
 			  }
       }.bind(this),
       error: function(xhr, status, err){
@@ -130,7 +135,7 @@ var DataTable = React.createClass({
   render: function(){
     return(
       <div>
-        <BodyTable data={this.state.data} filter={this.state.filter} fields={this.props.fields} filterField={this.props.filterField} onToggleClick={this.toggleActive} />
+        <BodyTable resource={this.props.resource} data={this.state.data} filter={this.state.filter} fields={this.props.fields} filterField={this.props.filterField} onToggleClick={this.toggleActive} />
       </div>
       )
   }

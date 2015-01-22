@@ -26,9 +26,14 @@ class ProductosController < ApplicationController
   end
 
   def update
-    if Producto.exists?(params[:producto][:id])
-      Producto.update(params[:producto][:id], producto_params)
-      redirect_to root_path, notice: "Producto editado exitosamente"
+    if Producto.exists?(params[:id])
+      @producto = Producto.find params[:id]
+      puts producto_params
+      if @producto.update(producto_params)
+        redirect_to root_path, notice: "Producto editado exitosamente"
+      else
+        render "new"
+      end
     else
       redirect_to root_path, alert: "Producto no existe"
     end

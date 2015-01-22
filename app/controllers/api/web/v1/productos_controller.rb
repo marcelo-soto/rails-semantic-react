@@ -1,6 +1,6 @@
 class Api::Web::V1::ProductosController < ApplicationController
   def index
-    @productos = Producto.all 
+    @productos = Producto.all.order(:codigo)
     render json: @productos
   end
 
