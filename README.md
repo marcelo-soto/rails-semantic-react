@@ -1,4 +1,4 @@
-# Ruby on Rail + Semantic UI + React
+# Ruby on Rails + Semantic UI + React
 
 Little experiment using this three technologies. I hope this example is useful to somebody =)
 
