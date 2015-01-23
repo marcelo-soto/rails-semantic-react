@@ -1,6 +1,6 @@
 # Ruby on Rail + Semantic UI + React
 
-Little experiment using this three technologies.
+Little experiment using this three technologies. I hope this example is useful to somebody =)
 
 ## TIL
 * Some INPUTS, like checkbox, are 'masked' by DIVs when used with Semantic UI, so yo cannot access directly to the INPUT.
